@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Will you be My Valentine</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6699;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff3366;
+        }
+
+        .video-container {
+            margin-top: 20px;
+        }
+
+        video, iframe {
+            width: 80%;
+            height: auto;
+        }
+        p{
+            font-family: cursive,fantasy;
+            color: #ff6699;
+        }
+        h1{
+            font-family: cursive,famtasy;
+            color: #ff3366;
+        }
+    </style>
+</head>
+<body>
+    <div id="question-stage">
+        <img src="https://i.pinimg.com/736x/10/bb/c5/10bbc5109fc6077107d91e76b8fda885.jpg" alt="Valentine's Image" id="main-image">
+        <h1>Will you be my Valentine?</h1>
+        <button id="yes-btn">Yes</button>
+        <button id="no-btn">No</button>
+    </div>
+
+    <div id="retry-stage" class="hidden">
+        <img src="https://i.ytimg.com/vi/yz_lhjlsa2s/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB8xmaA_g96aZWmJP3LLWeV2uXySw" alt="Retry Image" id="retry-image">
+        <h1>No was not an option!</h1>
+        <p>Try again:</p>
+        <button id="final-yes-btn">Yes</button>
+    </div>
+
+    <div id="celebration-stage" class="hidden">
+        <div class="video-container">
+            <video autoplay loop muted>
+                <source src="https://media.tenor.com/arqlNu8gyJYAAAPo/cat-cat-jumping.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h1>Yay! You said yes!</h1>
+        </div>
+    </div>
+
+    <script>
+        const questionStage = document.getElementById('question-stage');
+        const retryStage = document.getElementById('retry-stage');
+        const celebrationStage = document.getElementById('celebration-stage');
+
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const finalYesBtn = document.getElementById('final-yes-btn');
+
+        yesBtn.addEventListener('click', () => {
+            questionStage.classList.add('hidden');
+            celebrationStage.classList.remove('hidden');
+        });
+
+        noBtn.addEventListener('click', () => {
+            questionStage.classList.add('hidden');
+            retryStage.classList.remove('hidden');
+        });
+
+        finalYesBtn.addEventListener('click', () => {
+            retryStage.classList.add('hidden');
+            celebrationStage.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
